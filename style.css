@@ -79,8 +79,7 @@ body {
   margin-top: 100px;
   width: 60vw;
   height: 250px;
-  display: flex;
-  opacity: 0;
+
   flex-direction: column;
   align-items: center;
 
@@ -120,27 +119,37 @@ body {
   border: 10px solid transparent;
   cursor: pointer;
 }
-/* ==========paper bg /border /position for original */
+/* ==========btns bg /border /position for original */
 .paper {
   display: flex;
   margin-top: -100px;
   margin-left: -40px;
-
-  background-image: linear-gradient(white, white),
-    linear-gradient(to right, hsl(230, 89%, 62%), hsl(230, 89%, 65%));
 }
-/* ============= scissor bg /border /position for original*/
+
 .scissor {
   display: flex;
   margin-top: -100px;
   margin-right: -30px;
+}
+#paper {
+  background-image: linear-gradient(white, white),
+    linear-gradient(to right, hsl(230, 89%, 62%), hsl(230, 89%, 65%));
+}
+#scissor {
   background-image: linear-gradient(white, white),
     linear-gradient(to right, hsl(39, 89%, 49%), hsl(40, 84%, 53%));
 }
-/* ============rock bg /border /position for original==== */
-.rock {
+#rock {
   background-image: linear-gradient(white, white),
     linear-gradient(to right, hsl(349, 71%, 52%), hsl(349, 70%, 56%));
+}
+#spock {
+  background-image: linear-gradient(white, white),
+    linear-gradient(to right, hsl(189, 59%, 53%), hsl(189, 58%, 57%));
+}
+#lizzard {
+  background-image: linear-gradient(white, white),
+    linear-gradient(to right, hsl(261, 73%, 60%), hsl(261, 72%, 63%));
 }
 
 /* ===============switch btn======================== */
@@ -220,7 +229,7 @@ body {
 }
 /* =================bonus-game============ */
 .bonus-game {
-  opacity: 0;
+  display: none;
   position: relative;
   background-image: url(./images/bg-pentagon.svg);
 
@@ -252,16 +261,60 @@ body {
   position: absolute;
   bottom: 0;
   left: 15px;
-  background-image: linear-gradient(white, white),
-    linear-gradient(to right, hsl(261, 73%, 60%), hsl(261, 72%, 63%));
 }
 .bonus-spock {
   position: absolute;
   left: 0;
   margin-top: 80px;
   margin-left: -15px;
-  background-image: linear-gradient(white, white),
-    linear-gradient(to right, hsl(189, 59%, 53%), hsl(189, 58%, 57%));
+}
+/* =============first results container============ */
+.results-container {
+  display: none;
+  align-items: center;
+  justify-content: space-between;
+  width: 80vw;
+  margin-top: 100px;
+  margin-bottom: 150px;
+}
+.user {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1rem;
+}
+.user-title {
+  order: 2;
+  color: white;
+  font-family: var(--fontfam);
+  font-weight: 600;
+  font-size: 24px;
+  text-transform: uppercase;
+}
+.result-user {
+  display: flex;
+  order: 1;
+}
+.pc {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1rem;
+}
+.pc-title {
+  order: 2;
+  color: white;
+  font-family: var(--fontfam);
+  font-weight: 600;
+  font-size: 24px;
+  text-transform: uppercase;
+}
+.pc-result {
+  order: 1;
+  background-color: hsl(214, 47%, 23%);
+  opacity: 0.5;
 }
 /* ============media-query for 500px+========= */
 @media only screen and (min-width: 500px) {
@@ -342,6 +395,6 @@ body {
 }
 
 /*===================js class============= */
-.show-opacity {
-  opacity: 1;
+.show-container {
+  display: flex;
 }
