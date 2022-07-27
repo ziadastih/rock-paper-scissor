@@ -75,10 +75,12 @@ body {
   font-weight: 700;
 }
 .game {
+  display: none;
   margin-top: 100px;
   width: 60vw;
   height: 250px;
   display: flex;
+  opacity: 0;
   flex-direction: column;
   align-items: center;
 
@@ -141,6 +143,48 @@ body {
     linear-gradient(to right, hsl(349, 71%, 52%), hsl(349, 70%, 56%));
 }
 
+/* ===============switch btn======================== */
+.switch-container {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.game-title {
+  color: white;
+  font-family: var(--fontfam);
+  font-weight: 600;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100px;
+}
+.switch-btn {
+  margin-top: 10px;
+
+  width: 80px;
+  height: 10px;
+  border-radius: 25px;
+  background-color: var(--DarkText);
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  cursor: pointer;
+}
+.switch-circle {
+  width: 40px;
+  height: 10px;
+  border-radius: 25px;
+  background-image: linear-gradient(
+    to right,
+    hsl(349, 71%, 52%),
+    hsl(349, 70%, 56%)
+  );
+  cursor: no-drop;
+}
+
 /* =========btn rules================== */
 .rules-btn {
   background-color: transparent;
@@ -156,11 +200,12 @@ body {
   cursor: pointer;
 }
 .rules-info {
+  display: none;
   background-color: white;
   height: 100vh;
   width: 100vw;
   position: absolute;
-  display: flex;
+  /* display: flex; */
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -173,7 +218,51 @@ body {
 .close-btn {
   cursor: pointer;
 }
+/* =================bonus-game============ */
+.bonus-game {
+  opacity: 0;
+  position: relative;
+  background-image: url(./images/bg-pentagon.svg);
 
+  width: 80vw;
+  height: 350px;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-bottom: 150px;
+}
+
+.bonus-paper {
+  position: absolute;
+  right: 0;
+  margin-top: 80px;
+  margin-right: -15px;
+}
+.bonus-rock {
+  position: absolute;
+  bottom: 0;
+  right: 15px;
+}
+.bonus-scissor {
+  position: absolute;
+  margin-top: -10px;
+  top: 0;
+  left: 110px;
+}
+.bonus-lizzard {
+  position: absolute;
+  bottom: 0;
+  left: 15px;
+  background-image: linear-gradient(white, white),
+    linear-gradient(to right, hsl(261, 73%, 60%), hsl(261, 72%, 63%));
+}
+.bonus-spock {
+  position: absolute;
+  left: 0;
+  margin-top: 80px;
+  margin-left: -15px;
+  background-image: linear-gradient(white, white),
+    linear-gradient(to right, hsl(189, 59%, 53%), hsl(189, 58%, 57%));
+}
 /* ============media-query for 500px+========= */
 @media only screen and (min-width: 500px) {
   .header {
@@ -239,5 +328,20 @@ body {
     );
     z-index: 1;
     opacity: 0.5;
+    display: none;
   }
+  .switch-container {
+    position: absolute;
+    bottom: 30px;
+    left: 30px;
+  }
+  .bonus-game {
+    position: relative;
+    width: 350px;
+  }
+}
+
+/*===================js class============= */
+.show-opacity {
+  opacity: 1;
 }
