@@ -372,7 +372,6 @@ body {
 }
 /* ===================pc shadow winner condition=================== */
 .circle-overlay {
-  display: none;
   z-index: -1;
   position: absolute;
   margin-bottom: 40px;
@@ -383,7 +382,6 @@ body {
   opacity: 0.1;
 }
 .circle-overlay2 {
-  display: none;
   z-index: -1;
   position: absolute;
   margin-bottom: 40px;
@@ -394,7 +392,6 @@ body {
   opacity: 0.3;
 }
 .circle-overlay3 {
-  display: none;
   z-index: -1;
   position: absolute;
   margin-bottom: 40px;
@@ -404,10 +401,11 @@ body {
   border-radius: 50%;
   opacity: 0.2;
 }
-
+.pc-win {
+  display: none;
+}
 /* ==============user circle winner shadow================== */
 .user-circle-overlay {
-  display: none;
   z-index: -1;
   position: absolute;
   margin-bottom: 40px;
@@ -418,7 +416,6 @@ body {
   opacity: 0.1;
 }
 .user-circle-overlay2 {
-  display: none;
   z-index: -1;
   position: absolute;
   margin-bottom: 40px;
@@ -429,7 +426,6 @@ body {
   opacity: 0.3;
 }
 .user-circle-overlay3 {
-  display: none;
   z-index: -1;
   position: absolute;
   margin-bottom: 40px;
@@ -439,7 +435,9 @@ body {
   border-radius: 50%;
   opacity: 0.2;
 }
-
+.user-win {
+  display: none;
+}
 /* ============media for 500px for the surface duo */
 @media only screen and (min-width: 500px) {
   .bonus-game {
@@ -606,4 +604,10 @@ body {
 /*===================js class============= */
 .show-container {
   display: flex;
+}
+.remove-container {
+  display: none;
+}
+.switch-mode {
+  justify-content: flex-end;
 }

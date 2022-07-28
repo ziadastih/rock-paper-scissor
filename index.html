@@ -28,34 +28,34 @@
     <!-- ================original game=============== -->
     <div class="game">
       <div class="first-line">
-        <div class="paper circle">
+        <div class="paper circle gameplay-btn">
           <img src="./images/icon-paper.svg" id="paper" alt="" />
         </div>
-        <div class="scissor circle">
+        <div class="scissor circle gameplay-btn">
           <img src="./images/icon-scissors.svg" id="scissor" alt="" />
         </div>
       </div>
       <div class="second-line">
-        <div class="rock circle">
+        <div class="rock circle gameplay-btn">
           <img src="./images/icon-rock.svg" id="rock" alt="" />
         </div>
       </div>
     </div>
     <!-- ======================bonus game========================== -->
     <div class="bonus-game">
-      <div class="bonus-paper paper circle">
+      <div class="bonus-paper paper circle gameplay-btn">
         <img src="./images/icon-paper.svg" id="paper" alt="" />
       </div>
-      <div class="bonus-rock rock circle">
+      <div class="bonus-rock rock circle gameplay-btn">
         <img src="./images/icon-rock.svg" id="rock" alt="" />
       </div>
-      <div class="bonus-scissor scissor circle">
+      <div class="bonus-scissor scissor circle gameplay-btn">
         <img src="./images/icon-scissors.svg" id="scissor" alt="" />
       </div>
-      <div class="bonus-lizzard circle">
+      <div class="bonus-lizzard circle gameplay-btn">
         <img src="./images/icon-lizard.svg" id="lizzard" alt="" />
       </div>
-      <div class="bonus-spock circle">
+      <div class="bonus-spock circle gameplay-btn">
         <img src="./images/icon-spock.svg" id="spock" alt="" />
       </div>
     </div>
@@ -66,9 +66,9 @@
         <div class="circle result-user" id="paper">
           <img src="./images/icon-paper.svg" alt="" />
         </div>
-        <div class="user-circle-overlay"></div>
-        <div class="user-circle-overlay2"></div>
-        <div class="user-circle-overlay3"></div>
+        <div class="user-circle-overlay user-win"></div>
+        <div class="user-circle-overlay2 user-win"></div>
+        <div class="user-circle-overlay3 user-win"></div>
       </div>
       <div class="pc">
         <h2 class="pc-title">the house picked</h2>
@@ -76,9 +76,9 @@
           <img src="./images/icon-lizard.svg" alt="" />
         </div>
 
-        <div class="circle-overlay"></div>
-        <div class="circle-overlay2"></div>
-        <div class="circle-overlay3"></div>
+        <div class="circle-overlay pc-win"></div>
+        <div class="circle-overlay2 pc-win"></div>
+        <div class="circle-overlay3 pc-win"></div>
       </div>
     </div>
     <!-- ============playagain btn and reset btn================== -->
@@ -101,7 +101,7 @@
     <!-- =================rules info on click======================= -->
     <div class="rules-info">
       <h1>rules</h1>
-      <img src="./images/image-rules.svg" alt="" />
+      <img src="./images/image-rules.svg" id="rules-img" alt="" />
       <img src="./images/icon-close.svg" class="close-btn" alt="" />
     </div>
 
