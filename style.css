@@ -404,6 +404,9 @@ body {
 .pc-win {
   display: none;
 }
+.user-win {
+  display: none;
+}
 /* ==============user circle winner shadow================== */
 .user-circle-overlay {
   z-index: -1;
@@ -435,9 +438,7 @@ body {
   border-radius: 50%;
   opacity: 0.2;
 }
-.user-win {
-  display: none;
-}
+
 /* ============media for 500px for the surface duo */
 @media only screen and (min-width: 500px) {
   .bonus-game {
