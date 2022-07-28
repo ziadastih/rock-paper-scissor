@@ -75,7 +75,7 @@ body {
   font-weight: 700;
 }
 .game {
-  display: none;
+  display: flex;
   margin-top: 100px;
   width: 60vw;
   height: 250px;
@@ -86,6 +86,7 @@ body {
   background-image: url(./images/bg-triangle.svg);
   background-size: contain;
   background-repeat: no-repeat;
+
   margin-bottom: 150px;
 }
 /* ====flex first line and then give space between and align each one exactly as we want ========= */
@@ -124,32 +125,20 @@ body {
   display: flex;
   margin-top: -100px;
   margin-left: -40px;
+  background-image: linear-gradient(white, white),
+    linear-gradient(to right, hsl(230, 89%, 62%), hsl(230, 89%, 65%));
 }
 
 .scissor {
   display: flex;
   margin-top: -100px;
   margin-right: -30px;
-}
-#paper {
   background-image: linear-gradient(white, white),
     linear-gradient(to right, hsl(230, 89%, 62%), hsl(230, 89%, 65%));
 }
-#scissor {
-  background-image: linear-gradient(white, white),
-    linear-gradient(to right, hsl(39, 89%, 49%), hsl(40, 84%, 53%));
-}
-#rock {
+.rock {
   background-image: linear-gradient(white, white),
     linear-gradient(to right, hsl(349, 71%, 52%), hsl(349, 70%, 56%));
-}
-#spock {
-  background-image: linear-gradient(white, white),
-    linear-gradient(to right, hsl(189, 59%, 53%), hsl(189, 58%, 57%));
-}
-#lizzard {
-  background-image: linear-gradient(white, white),
-    linear-gradient(to right, hsl(261, 73%, 60%), hsl(261, 72%, 63%));
 }
 
 /* ===============switch btn======================== */
@@ -159,6 +148,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin-bottom: 30px;
 }
 .game-title {
   color: white;
@@ -214,7 +204,7 @@ body {
   height: 100vh;
   width: 100vw;
   position: absolute;
-  /* display: flex; */
+
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -261,22 +251,49 @@ body {
   position: absolute;
   bottom: 0;
   left: 15px;
+  background-image: linear-gradient(white, white),
+    linear-gradient(to right, hsl(261, 73%, 60%), hsl(261, 72%, 63%));
 }
 .bonus-spock {
   position: absolute;
   left: 0;
   margin-top: 80px;
   margin-left: -15px;
+  background-image: linear-gradient(white, white),
+    linear-gradient(to right, hsl(189, 59%, 53%), hsl(189, 58%, 57%));
 }
 /* =============first results container============ */
 .results-container {
   display: none;
+
   align-items: center;
   justify-content: space-between;
   width: 80vw;
   margin-top: 100px;
-  margin-bottom: 150px;
+  margin-bottom: 100px;
 }
+#paper {
+  background-image: linear-gradient(white, white),
+    linear-gradient(to right, hsl(230, 89%, 62%), hsl(230, 89%, 65%));
+}
+#scissor {
+  background-image: linear-gradient(white, white),
+    linear-gradient(to right, hsl(230, 89%, 62%), hsl(230, 89%, 65%));
+}
+#rock {
+  background-image: linear-gradient(white, white),
+    linear-gradient(to right, hsl(349, 71%, 52%), hsl(349, 70%, 56%));
+}
+
+#lizzard {
+  background-image: linear-gradient(white, white),
+    linear-gradient(to right, hsl(261, 73%, 60%), hsl(261, 72%, 63%));
+}
+#spock {
+  background-image: linear-gradient(white, white),
+    linear-gradient(to right, hsl(189, 59%, 53%), hsl(189, 58%, 57%));
+}
+
 .user {
   display: flex;
   align-items: center;
@@ -289,7 +306,7 @@ body {
   color: white;
   font-family: var(--fontfam);
   font-weight: 600;
-  font-size: 24px;
+  font-size: 18px;
   text-transform: uppercase;
 }
 .result-user {
@@ -308,16 +325,197 @@ body {
   color: white;
   font-family: var(--fontfam);
   font-weight: 600;
-  font-size: 24px;
+  font-size: 18px;
   text-transform: uppercase;
 }
 .pc-result {
   order: 1;
   background-color: hsl(214, 47%, 23%);
-  opacity: 0.5;
+  opacity: 1;
+  position: relative;
 }
-/* ============media-query for 500px+========= */
+/* ==========winner or loser and playagain/reset btn */
+.result-text-container {
+  display: none;
+
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  flex-direction: column;
+  margin-bottom: 30px;
+}
+.win-lose {
+  font-family: var(--fontfam);
+  font-weight: 700;
+  color: white;
+  font-size: 70px;
+  text-transform: uppercase;
+}
+.btn {
+  border: none;
+  background-color: white;
+  color: var(--DarkText);
+  border-radius: 5px;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--fontfam);
+  font-weight: 600;
+  font-size: 24px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: 300ms ease-in;
+}
+.btn:hover {
+  color: hsl(349, 71%, 52%);
+}
+/* ===================pc shadow winner condition=================== */
+.circle-overlay {
+  display: none;
+  z-index: -1;
+  position: absolute;
+  margin-bottom: 40px;
+  width: 120px;
+  height: 120px;
+  background-color: whitesmoke;
+  border-radius: 50%;
+  opacity: 0.1;
+}
+.circle-overlay2 {
+  display: none;
+  z-index: -1;
+  position: absolute;
+  margin-bottom: 40px;
+  width: 150px;
+  height: 150px;
+  background-color: hsl(214, 47%, 23%);
+  border-radius: 50%;
+  opacity: 0.3;
+}
+.circle-overlay3 {
+  display: none;
+  z-index: -1;
+  position: absolute;
+  margin-bottom: 40px;
+  width: 200px;
+  height: 200px;
+  background-color: hsl(237, 49%, 15%);
+  border-radius: 50%;
+  opacity: 0.2;
+}
+
+/* ==============user circle winner shadow================== */
+.user-circle-overlay {
+  display: none;
+  z-index: -1;
+  position: absolute;
+  margin-bottom: 40px;
+  width: 120px;
+  height: 120px;
+  background-color: whitesmoke;
+  border-radius: 50%;
+  opacity: 0.1;
+}
+.user-circle-overlay2 {
+  display: none;
+  z-index: -1;
+  position: absolute;
+  margin-bottom: 40px;
+  width: 150px;
+  height: 150px;
+  background-color: hsl(214, 47%, 23%);
+  border-radius: 50%;
+  opacity: 0.3;
+}
+.user-circle-overlay3 {
+  display: none;
+  z-index: -1;
+  position: absolute;
+  margin-bottom: 40px;
+  width: 200px;
+  height: 200px;
+  background-color: hsl(237, 49%, 15%);
+  border-radius: 50%;
+  opacity: 0.2;
+}
+
+/* ============media for 500px for the surface duo */
 @media only screen and (min-width: 500px) {
+  .bonus-game {
+    position: relative;
+    width: 350px;
+  }
+  .game {
+    margin-top: 20px;
+    width: 500px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-position: center;
+  }
+  .first-line {
+    width: 500px;
+  }
+  .paper {
+    margin-left: 60px;
+  }
+  .scissor {
+    margin-right: 60px;
+  }
+  .second-line {
+    width: 500px;
+  }
+  .rules-btn {
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+  }
+  .rules-info {
+    width: 250px;
+    height: 250px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    gap: 0;
+    border-radius: 5px;
+  }
+  .rules-info img {
+    width: 150px;
+  }
+  .rules-info h1 {
+    position: absolute;
+    top: 10px;
+    left: 30px;
+  }
+  .rules-info .close-btn {
+    width: 10px;
+    position: absolute;
+    top: 30px;
+    right: 30px;
+  }
+  .rules-overlay {
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    background-image: linear-gradient(
+      to bottom,
+      hsl(214, 47%, 23%),
+      hsl(237, 49%, 15%)
+    );
+    z-index: 1;
+    opacity: 0.5;
+    display: none;
+  }
+  .switch-container {
+    position: absolute;
+    bottom: 30px;
+    left: 30px;
+  }
+}
+/* ============media-query for 650px+========= */
+@media only screen and (min-width: 650px) {
   .header {
     width: 500px;
   }
@@ -391,6 +589,17 @@ body {
   .bonus-game {
     position: relative;
     width: 350px;
+  }
+  .win-lose {
+    font-size: 32px;
+  }
+  .results-container {
+    width: 70vw;
+    position: relative;
+  }
+  .result-text-container {
+    position: absolute;
+    margin-top: 300px;
   }
 }
 
