@@ -87,9 +87,7 @@ function playGame() {
     <div class="circle result-user" id=${userChoice.id}>
       <img src=${userChoice.src} alt="" />
     </div>
-    <div class="user-circle-overlay user-win"></div>
-        <div class="user-circle-overlay2 user-win"></div>
-        <div class="user-circle-overlay3 user-win"></div>`;
+    `;
       bonusGame.classList.remove("show-container");
       originalGame.classList.add("remove-container");
       resultContainer.classList.add("show-container");
@@ -100,11 +98,12 @@ function playGame() {
         displayPcChoice(pcChoiceOriginal, originalGameNumber);
       }
 
-      //   endResult();
+      endResult();
     });
   });
 }
 
+// =======================pc random result==========================
 function displayPcChoice(arr, num) {
   pcDiv.dataset.id = `${arr[num].id}`;
   setTimeout(() => {
@@ -112,45 +111,88 @@ function displayPcChoice(arr, num) {
         <div class="circle pc-result" id=${arr[num].id}>
         <img src=${arr[num].src} alt="" />
         </div>
-        <div class="circle-overlay pc-win"></div>
-        <div class="circle-overlay2 pc-win"></div>
-        <div class="circle-overlay3 pc-win"></div>`;
-    endResult();
+       `;
   }, 1000);
-  console.log(text.textContent);
 }
 
+// ============================win/lose condition function =================
 function endResult() {
   const userId = userDiv.dataset.id;
   const pcId = pcDiv.dataset.id;
+  // ========get the current score in order to modify it
+  let number = parseInt(scoreValue.textContent);
 
-  resultTextContainer.classList.add("show-container");
-  // ================scissor=============
-  if (userId === "scissor" && (pcId === "paper" || pcId === "lizzard")) {
-    text.textContent = `you win`;
+  setTimeout(function () {
+    resultTextContainer.classList.add("show-container");
+    // ================scissor=============
+    if (userId === "scissor" && (pcId === "paper" || pcId === "lizzard")) {
+      text.textContent = `you win`;
 
-    //   =============tie=================
-  } else if (userId === pcId) {
-    text.textContent = `tie`;
-    scoreValue.textContent = scoreValue.textContent;
-    //   ==========================paper======================
-  } else if (userId === "paper" && (pcId === "rock" || pcId === "spock")) {
-    text.textContent = `you win`;
+      //   =============tie=================
+    } else if (userId === pcId) {
+      text.textContent = `tie`;
+      scoreValue.textContent = scoreValue.textContent;
+      //   ==========================paper======================
+    } else if (userId === "paper" && (pcId === "rock" || pcId === "spock")) {
+      text.textContent = `you win`;
 
-    //   ====================ROCK=====================
-  } else if (userId === "rock" && (pcId === "scissor" || pcId === "lizzard")) {
-    text.textContent = `you win`;
+      //   ====================ROCK=====================
+    } else if (
+      userId === "rock" &&
+      (pcId === "scissor" || pcId === "lizzard")
+    ) {
+      text.textContent = `you win`;
 
-    //   ====================LIZZARD===============================
-  } else if (userId === "lizzard" && (pcId === "paper" || pcId === "spock")) {
-    text.textContent = `you win`;
+      //   ====================LIZZARD===============================
+    } else if (userId === "lizzard" && (pcId === "paper" || pcId === "spock")) {
+      text.textContent = `you win`;
 
-    //   =====================SPOCK===============================
-  } else if (userId === "spock" && (pcId === "paper" || pcId === "rock")) {
-    text.textContent = `you win`;
-  } else {
-    text.textContent = `you lose`;
-  }
+      //   =====================SPOCK===============================
+    } else if (userId === "spock" && (pcId === "paper" || pcId === "rock")) {
+      text.textContent = `you win`;
+    } else {
+      text.textContent = `you lose`;
+    }
+    // ==============adding the overlays and giving condition========
+    userDiv.innerHTML += `<div class="user-circle-overlay user-win"></div>
+      <div class="user-circle-overlay2 user-win"></div>
+      <div class="user-circle-overlay3 user-win"></div>`;
+
+    pcDiv.innerHTML += `<div class="circle-overlay pc-win"></div>
+    <div class="circle-overlay2 pc-win"></div>
+    <div class="circle-overlay3 pc-win"></div>`;
+    const pcWin = document.querySelectorAll(".pc-win");
+    const userWin = document.querySelectorAll(".user-win");
+
+    if (text.textContent === "you lose") {
+      scoreValue.textContent = number - 1;
+
+      pcWin.forEach(function (item) {
+        item.classList.add("show-container");
+      });
+      userWin.forEach(function (item) {
+        item.classList.remove("show-container");
+      });
+    } else if (text.textContent === "you win") {
+      scoreValue.textContent = number + 1;
+
+      userWin.forEach(function (item) {
+        item.classList.add("show-container");
+      });
+      pcWin.forEach(function (item) {
+        item.classList.remove("show-container");
+      });
+    } else {
+      scoreValue.textContent = number;
+
+      userWin.forEach(function (item) {
+        item.classList.remove("show-container");
+      });
+      pcWin.forEach(function (item) {
+        item.classList.remove("show-container");
+      });
+    }
+  }, 1000);
 }
 
 // =====================play again btn=========
